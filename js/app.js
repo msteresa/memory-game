@@ -9,7 +9,6 @@ var moveCounter = 0;
 var $deck = jQuery('.deck');
 var $moves = $('.moves');
 var $stars = $('.stars');
-var $time = $('#timer');
 var rating = 0;
 var openedCards = [];
 var matchedCards = [];
@@ -177,7 +176,7 @@ function reset() {
 
     timer.stop();
     //reset timer
-    $time.html("00:00:00");
+    $('#timer').html("00:00:00");
     //reset move counter 
     moveCounter = 0;
     //reset openedCards array 
