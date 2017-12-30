@@ -9,6 +9,7 @@ var moveCounter = 0;
 var $deck = jQuery('.deck');
 var $moves = $('.moves');
 var $stars = $('.stars');
+var $time = $('#timer');
 var rating = 0;
 var openedCards = [];
 var matchedCards = [];
@@ -48,6 +49,9 @@ function shuffle(array) {
  */
 
 function flipCard() {
+
+    //start timer once user clicks on a card
+    timer.start();
 
     //prevents user from double clicking the card
     this.removeEventListener('click', flipCard);
@@ -171,8 +175,9 @@ function reset() {
     $('#resetModal').append(resetMessage);
     $('#resetModal').modal('show');
 
+    timer.stop();
     //reset timer
-    timer.reset();
+    $time.html("00:00:00");
     //reset move counter 
     moveCounter = 0;
     //reset openedCards array 
@@ -218,6 +223,7 @@ function result(time) {
 }
 
 function start(deck) {
+
     //shuffle the deck of cards 
     var deckOfCards = shuffle(deck);
     //move counter starts at 0
@@ -246,8 +252,7 @@ function start(deck) {
 }
 
 function play(deck) { 
-    //start timer 
-    timer.start();
+
     timer.addEventListener('secondsUpdated', function (e) {
         $('#timer').html(timer.getTimeValues().toString());
     });
