@@ -118,7 +118,7 @@ function cardMatch() {
 
 function setStars(numberOfMoves) { 
 
-    //set star rating to 2, if user takes more than 10 and less of equal to 20 moves
+    //set star rating to 2, if user takes more than 10 and less or equal to 20 moves
     if (numberOfMoves > 10 && numberOfMoves <= 20) { 
         $stars.find('i').eq(2).removeClass('fa fa-star').addClass('fa fa-star-o');
         rating = 2;
@@ -134,11 +134,15 @@ function setStars(numberOfMoves) {
 function checkWin() { 
     //the user can only win when all cards are matched 
     if (matchedCards.length == cards.length) { 
+
         //console.log("Congratulations, all the cards are matched!"); 
+
         //pause timer
         timer.pause();
+
         //store paused time to variable 
         var stoppedTime = timer.getTimeValues().toString();
+
         //display result modal to user 
         result(stoppedTime);
     } else { 
